@@ -207,6 +207,7 @@ dependencies = [
  "libpulse-binding",
  "libpulse-simple-binding",
  "nnnoiseless",
+ "rust-pulsectl",
 ]
 
 [[package]]
@@ -249,6 +250,15 @@ name = "pkg-config"
 version = "0.3.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d36492546b6af1463394d46f0c834346f31548646f6ba10849802c9c9a27ac33"
+
+[[package]]
+name = "rust-pulsectl"
+version = "0.2.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f0133fcaf02798ef68c074313bbd5a47de2d7edb1d8db9c61872206bd7f398e8"
+dependencies = [
+ "libpulse-binding",
+]
 
 [[package]]
 name = "rustfft"
