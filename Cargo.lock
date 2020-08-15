@@ -7,6 +7,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f8aac770f1885fd7e387acedd76065302551364496e46b3dd00860b2f8359b9d"
 
 [[package]]
+name = "bitflags"
+version = "0.8.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1370e9fc2a6ae53aea8b7a5110edbd08836ed87c88736dfabccade1c2b44bff4"
+
+[[package]]
 name = "byteorder"
 version = "1.3.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -138,6 +144,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8a164bb2ceaeff4f42542bdb847c41517c78a60f5649671b2a07312b6e117549"
 
 [[package]]
+name = "ladspa"
+version = "0.3.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6197e2fb8a3da99eca216e9689b47465b23cfe09e1a1ddc720fa1acdd54aa267"
+dependencies = [
+ "bitflags",
+ "libc",
+ "vec_map",
+]
+
+[[package]]
 name = "libc"
 version = "0.2.72"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -198,6 +215,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "nnnoiseless_ladspa"
+version = "0.1.0"
+dependencies = [
+ "ladspa",
+ "nnnoiseless_plugin",
+]
+
+[[package]]
+name = "nnnoiseless_plugin"
+version = "0.1.0"
+dependencies = [
+ "nnnoiseless",
+]
+
+[[package]]
 name = "nonoise"
 version = "0.1.0"
 dependencies = [
@@ -207,6 +239,8 @@ dependencies = [
  "libpulse-binding",
  "libpulse-simple-binding",
  "nnnoiseless",
+ "nnnoiseless_ladspa",
+ "nnnoiseless_plugin",
  "rust-pulsectl",
 ]
 
@@ -284,6 +318,12 @@ name = "transpose"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "643e21580bb0627c7bb09e5cedbb42c8705b19d012de593ed6b0309270b3cd1e"
+
+[[package]]
+name = "vec_map"
+version = "0.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f8cdc8b93bd0198ed872357fb2e667f7125646b1762f16d60b2c96350d361897"
 
 [[package]]
 name = "winapi"
