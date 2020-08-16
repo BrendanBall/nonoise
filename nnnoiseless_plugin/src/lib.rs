@@ -1,6 +1,6 @@
 use nnnoiseless::DenoiseState;
 
-const FRAME_SIZE: usize = DenoiseState::FRAME_SIZE;
+pub const FRAME_SIZE: usize = DenoiseState::FRAME_SIZE;
 const VAD_GRACE_PERIOD_SAMPLES: i16 = 20;
 
 pub struct Denoise {

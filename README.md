@@ -12,13 +12,20 @@ For example, to create a new mono device with noise-reduced audio from your micr
 pactl list sources short
 ```
 
+### Using a LADSPA plugin
 Then, create the new device using:
 ```sh
-pacmd load-module module-null-sink sink_name=nnnoiseless_mic_out rate=48000
+pactl load-module module-null-sink sink_name=nonoise_mic_denoised_out rate=48000
 
-pacmd load-module module-ladspa-sink sink_name=nnnoiseless_mic_raw_in sink_master=nnnoiseless_mic_out label=noiseless_suppressor_mono plugin=/home/brendan/development/projects/nonoise/target/debug/libnnnoiseless_ladspa.so control=95
+pactl load-module module-ladspa-sink sink_name=nonoise_mic_raw_in master=nonoise_mic_denoised_out label=noise_suppressor_mono plugin=/home/brendan/development/projects/nonoise/librnnoise-048783866.so control=95
 
-pacmd load-module module-loopback source=alsa_input.usb-Microsoft_Microsoft___LifeCam_HD-3000-02.mono-fallback sink=nnnoiseless_mic_raw_in channels=1
+pactl load-module module-loopback source=alsa_input.usb-Microsoft_Microsoft___LifeCam_HD-3000-02.mono-fallback sink=nonoise_mic_raw_in channels=1 latency_msec=1
+ 
+pactl load-module module-remap-source master=nonoise_mic_denoised_out.monitor source_name=nonoise_mic_remap source_properties="device.description='NoNoiseMicrophone'"
+```
 
-pacmd load-module module-remap-source master=nnnoiseless_mic_out.monitor source_name=nnnoiseless_mic_remap source_properties="device.description='NNNoiseless Microphone'"
+### Recording and playing back. Currently needed for running the virtual mic
+```sh
+pactl load-module module-null-sink sink_name=nonoise_mic_denoised_out rate=48000
+pactl load-module module-remap-source master=nonoise_mic_denoised_out.monitor source_name=nonoise_mic_remap source_properties="device.description='NoNoiseMicrophone'"
 ```

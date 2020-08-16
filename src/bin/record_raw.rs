@@ -26,14 +26,14 @@ fn get_simple() -> Simple {
     };
     assert!(spec.is_valid());
     let s = Simple::new(
-        None,                             // Use the default server
-        "FooApp",                         // Our application’s name
-        Direction::Record,                // We want a record stream
-        Some("mic_denoised_out.monitor"), // Use the default device
-        "Test record",                    // Description of our stream
-        &spec,                            // Our sample format
-        None,                             // Use default channel map
-        None,                             // Use default buffering attributes
+        None,              // Use the default server
+        "FooApp",          // Our application’s name
+        Direction::Record, // We want a record stream
+        None,              // Use the default device
+        "Test record",     // Description of our stream
+        &spec,             // Our sample format
+        None,              // Use default channel map
+        None,              // Use default buffering attributes
     );
     match s {
         Ok(s) => s,
