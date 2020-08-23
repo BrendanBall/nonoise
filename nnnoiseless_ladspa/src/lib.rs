@@ -16,7 +16,7 @@ impl Plugin for Nnnoiseless {
     fn run<'a>(&mut self, _sample_count: usize, ports: &[&'a PortConnection<'a>]) {
         let input = ports[0].unwrap_audio();
         let mut output = ports[1].unwrap_audio_mut();
-        self.denoise.process(input, &mut output, input.len(), 0.95)
+        self.denoise.process(input, &mut output, 0.95)
     }
 }
 #[repr(C)]

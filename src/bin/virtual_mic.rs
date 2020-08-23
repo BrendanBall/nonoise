@@ -26,13 +26,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             .chunks_exact(SAMPLE_TYPE_SIZE)
             .enumerate()
         {
-            input_buffer[i] = f32::from_le_bytes(sample.try_into().unwrap());
+            input_buffer[i] = SampleType::from_le_bytes(sample.try_into().unwrap());
         }
 
-        denoise.process(&input_buffer[..], &mut output_buffer[..], FRAME_SIZE, 0.95);
+        denoise.process(&input_buffer[..], &mut output_buffer[..], 0.95);
 
         for (i, sample) in output_buffer.iter().enumerate() {
-            for (j, byte) in f32::to_le_bytes(*sample).iter().enumerate() {
+            for (j, byte) in SampleType::to_le_bytes(*sample).iter().enumerate() {
                 output_buffer_bytes[i * SAMPLE_TYPE_SIZE + j] = *byte;
             }
         }
