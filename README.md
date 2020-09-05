@@ -29,3 +29,9 @@ pactl load-module module-remap-source master=nonoise_mic_denoised_out.monitor so
 pactl load-module module-null-sink sink_name=nonoise_mic_denoised_out rate=48000
 pactl load-module module-remap-source master=nonoise_mic_denoised_out.monitor source_name=nonoise_mic_remap source_properties="device.description='NoNoiseMicrophone'"
 ```
+
+## Resources
+- http://adventures.michaelfbryan.com/posts/audio-processing-for-dummies/
+- https://docs.rs/rsynth/0.1.1/rsynth/
+- https://github.com/mitchmindtree
+- https://nannou.cc/posts/moss_grant_completion

@@ -10,3 +10,8 @@ name = "nnnoiseless_plugin"
 
 [dependencies]
 nnnoiseless = "0.2.1"
+dasp_graph = "0.11.0"
+
+[dependencies.dasp]
+version = "0.11.0"
+features = ["signal"]
